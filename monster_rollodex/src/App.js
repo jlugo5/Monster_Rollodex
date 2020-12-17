@@ -10,7 +10,7 @@ class App extends React.Component{
     super()
     this.state = {
       monsters: [],
-      searField: '',
+      searchField: '',
     }
   }
 
@@ -20,21 +20,24 @@ class App extends React.Component{
     .then(users => this.setState({monsters: users}))
   }
 
+  onSearchChange = event => {
+    this.setState({searchField: event.target.value})
+  }
+
   render(){
 
     const { monsters, searchField } = this.state
 
     const filteredMonsters = monsters.filter(
-      monster => monster.name.includes(searchField)
+      monster => monster.name.toLowerCase().includes(searchField)
     )
-
 
     return(
       <div className="App">
         <h1>Monster's Rollodex</h1>
         <SearchBox onSearchChange = {this.onSearchChange} />
-        <CardList monsters = {this.state.monsters} />
-
+        <CardList monsters = {filteredMonsters} />
+        
       </div>
     );
   }
