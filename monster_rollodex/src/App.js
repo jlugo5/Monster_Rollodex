@@ -34,7 +34,7 @@ class App extends React.Component{
 
     return(
       <div className="App">
-        <h1>Monster's Rollodex</h1>
+        <h1>Monster's Rollodex Lugo</h1>
         <SearchBox onSearchChange = {this.onSearchChange} />
         <CardList monsters = {filteredMonsters} />
         
